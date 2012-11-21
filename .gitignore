@@ -1,0 +1,16 @@
+# project files
+*.sublime-workspace
+*.sublime-project
+
+# filesystem files
+.DS_Store
+
+# configuration files
+Config/*.php
+webroot/index.php
+
+# temporary files
+tmp/*/*
+
+# global negations
+!empty

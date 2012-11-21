@@ -1,0 +1,188 @@
+@import "bootstrap/less/bootstrap.less";
+@import "bootstrap/less/responsive.less";
+
+html, body {
+    background: url("../img/background-noise.png") repeat scroll 0 0 #EEEEEE;
+	font-size:12px;
+}
+
+/* loading effects for ajax calls */
+body.loading, body.loading input, body.loading a { cursor: wait; }
+
+body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+@media (max-width: 480px) {
+    .value-group{
+        & > .value-label{
+            float: none;
+            width: auto;
+            padding-top: 0;
+        }
+        & > .value{
+            float: none;
+            width: auto;
+            margin-left:0px;
+        }
+    }
+}
+
+@media (max-width: 980px) {
+    body{padding-top:0px;}
+}
+
+#container > .content {
+    background-color: #FFFFFF;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    width:98%;
+    padding: 1%;
+	margin-bottom:2%;
+}
+
+#main{
+}
+
+#sidebar{}
+
+[class^="icon-"] {
+  background-image: url(../img/glyphicons-halflings.png);
+}
+.icon-white {
+  background-image: url(../img/glyphicons-halflings-white.png);
+}
+h2.content-header, legend{
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: @baseLineHeight;
+  font-size: @baseFontSize * 1.5;
+  line-height: @baseLineHeight * 2;
+  color: @grayDark;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  font-weight: normal;
+}
+
+.dl-horizontal{
+    dt,dd{margin-bottom:5px; padding-top:5px;}
+	dd{line-height:17px;} //required to make the text line up
+	dt{text-align:left;}
+}
+
+table {
+    thead{
+        tr th a.asc{}
+        tr th a.desc{}
+    }
+    th.actions,td.actions{
+        a{
+            i{margin-right:5px; display: inline-block;}
+            margin-right:5px;
+            display: inline-block;
+        }
+    }
+}
+
+/* Sidebar */
+#sidebar > .well{padding: 8px 0;}
+
+/* Forms */
+.form-horizontal{
+    legend + .control-group{margin-top:0px;}
+    .control-group{
+        &.required > label:after{
+           content: attr(title) " (required)";
+            font-size:10px;
+            color:@grayLight;
+        }
+        & > label {
+            text-align: left;
+            font-weight: bold;
+            word-wrap:break-word;
+        }
+
+        select{width:auto;}
+    }
+
+    .value-group{
+        .clearfix();
+        margin-bottom: @baseLineHeight;
+        & > .value-label {
+            font-weight: bold;
+            text-align: left;
+            float: left;
+            padding-top: 5px;
+            //width: 140px;
+            color: #333333;
+            display: block;
+            margin-bottom: 5px;
+        }
+        & > .value{padding-top:4px; margin-left:160px;}
+    }
+}
+
+/* Login Page */
+#login{
+    display:block;
+    .form-horizontal{margin-bottom:0px;}
+}
+
+/* Debugging */
+table.cake-sql-log{
+    .box-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+    .border-radius(6px);
+
+    .table;
+    .table-striped;
+
+    background: none repeat scroll 0 0 #FFFFFF;
+    display: block;
+    margin: 0 auto;
+    padding: 20px;
+    width: 90%;
+    margin-bottom:20px;
+    font-size: 11px;
+
+    caption{color:#aaa}
+    tbody tr td:nth-child(2){width:70%; #font > #family > .monospace;}
+    thead tr th:nth-child(4), thead tr th:nth-child(5), thead tr th:nth-child(6){text-align: right;}
+}
+@media (max-width: 480px) {
+    table.cake-sql-log{display:none;}
+}
+
+/* Modals */
+.modal.confirm form{margin:0px;}
+
+/* Pagination */
+.pagination{margin-bottom:5px;}
+.pagination-summary{color:@grayLight; text-align:right; font-size: 12px;}
+.pagination li.disabled:first-child,
+.pagination li.current:first-child {
+    border-left-width: 1px;
+    border-radius: 3px 0 0 3px;
+}
+.pagination li:last-child {
+    border-radius: 0 3px 3px 0;
+}
+.pagination li.disabled,
+.pagination li.current{
+  float: left;
+  padding: 0 14px;
+  line-height: (@baseLineHeight * 2) - 2;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  border-left-width: 0;
+}
+.pagination a:hover,
+.pagination .current a,
+.pagination li.current{
+  background-color: #f5f5f5;
+}
+.pagination li.current,
+.pagination .current a,
+.pagination li.disabled{
+  color: @grayLight;
+  cursor: default;
+}
