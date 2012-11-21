@@ -10,7 +10,10 @@ Config/*.php
 webroot/index.php
 
 # temporary files
-tmp/*/*
+tmp/cache/*/*
+tmp/logs/*
+tmp/sessions/*
+tmp/tests/*
 
 # global negations
 !empty
