@@ -27,7 +27,17 @@ __* If you are not forking the project and are duplicating or using this as a ne
 
 5. Edit the database configuration in `Config/database.php` to match your connection details.
 
-6. At this point you should only be receiving missing table errors, to fix this open up console and run `cake schema create` from your app directory, this will set up the required tables
+6. At this point you should only be receiving missing table errors, to fix this open up console and run `cake schema create --name Cakebase` from your app directory, this will set up the required tables
 
-7. The next thing to do is add some user's so you can login by disabling auth, remember to renable auth or you will have no authorization on your application
+7. Once the login page is loading you need to add some groups and users to your tables so you can login. Open `Controller/AppController` and uncomment the following line `//$this->Auth->allow(array('*'));` This will temporarily disable Authentication on your appplication allowing you access without logging in.
 
+8. To add some users you need to go to soemthing like `http://localhost/your-app-name/admin/users/`. Here you will be able to add some groups and users. At first you __need__ to add at least one group and one user. After adding these remember to re-enable Auth by commenting out/removing `$this->Auth->allow(array('*'));` in `Controller/AppController`
+
+9. After enabling Auth you should be able to login with the details of the User you created and your ready to start development. If you are having trouble logging in at this point see the section below on Setting Up Permissions
+
+Setting Up Permissions
+----------------------
+
+For the quickest set-up the app uses Cake's PHP based ACL set up. There is very little documentation on this in the cookbook but there is plenty in the `Config/acl.php`.
+
+By default the app expects that the first group created is the 'Admin' group and has access to every feature on the site. If this is not how you have set up your groups then you will need to edit the `Config/acl.php` to see how to set your permissions. You can add other user levels as needed
