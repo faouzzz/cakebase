@@ -20,20 +20,22 @@ __* If you are not forking the project and are duplicating or using this as a ne
 1. The first thing to do is clone the repository to your development machine. `git clone https://github.com/veganista/cakebase`.
 
 2. Rename or duplicate `webroot/index.default.php` to `webroot/index.php`.
+	
+3. Open `webroot/index.php` and set `CAKE_CORE_INCLUDE_PATH` to the path of your CakePHP installation
 
-3. Rename or duplicate all the files in `Config/`.
+4. Rename or duplicate all the files in `Config/`.
 
-4. Inside `Config/core.php` you will need to replace the security salt and cipher seed with your own values, this page is useful for this: http://www.sethcardoza.com/tools/random_password_generator.
+5. Inside `Config/core.php` you will need to replace the security salt and cipher seed with your own values, this page is useful for this: http://www.sethcardoza.com/tools/random_password_generator.
 
-5. Edit the database configuration in `Config/database.php` to match your connection details.
+6. Edit the database configuration in `Config/database.php` to match your connection details.
 
-6. At this point you should only be receiving missing table errors, to fix this open up console and run `cake schema create --name Cakebase` from your app directory, this will set up the required tables
+7. At this point you should only be receiving missing table errors, to fix this open up console and run `cake schema create --name Cakebase` from your app directory, this will set up the required tables
 
-7. Once the login page is loading you need to add some groups and users to your tables so you can login. Open `Controller/AppController` and uncomment the following line `//$this->Auth->allow(array('*'));` This will temporarily disable Authentication on your appplication allowing you access without logging in.
+8. Once the login page is loading you need to add some groups and users to your tables so you can login. Open `Controller/AppController` and uncomment the following line `//$this->Auth->allow(array('*'));` This will temporarily disable Authentication on your appplication allowing you access without logging in.
 
-8. To add some users you need to go to soemthing like `http://localhost/your-app-name/admin/users/`. Here you will be able to add some groups and users. At first you __need__ to add at least one group and one user. After adding these remember to re-enable Auth by commenting out/removing `$this->Auth->allow(array('*'));` in `Controller/AppController`
+9. To add some users you need to go to soemthing like `http://localhost/your-app-name/admin/users/`. Here you will be able to add some groups and users. At first you __need__ to add at least one group and one user. After adding these remember to re-enable Auth by commenting out/removing `$this->Auth->allow(array('*'));` in `Controller/AppController`
 
-9. After enabling Auth you should be able to login with the details of the User you created and your ready to start development. If you are having trouble logging in at this point see the section below on Setting Up Permissions
+10. After enabling Auth you should be able to login with the details of the User you created and your ready to start development. If you are having trouble logging in at this point see the section below on Setting Up Permissions
 
 Setting Up Permissions
 ----------------------
