@@ -60,9 +60,11 @@
                 <a href="#" class="brand">CakeBase</a>
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li class="active"><?php echo $this->Html->link(__('Home'), '/'); ?></li>
-                        <li><?php echo $this->Html->link('Users', array('controller' => 'users', 'action' => 'index')); ?></li>
-                        <li><?php echo $this->Html->link('Groups', array('controller' => 'groups', 'action' => 'index')); ?></li>
+                        <?php 
+                            echo $this->Menu->item($this->Html->link(__('Home'), '/'));
+                            echo $this->Menu->item($this->Html->link(__('Users'), array('admin' => true, 'controller' => 'users', 'action' => 'index')));
+                            echo $this->Menu->item($this->Html->link(__('Groups'), array('admin' => true, 'controller' => 'groups', 'action' => 'index')));
+                        ?>
                     </ul>
                     <ul class="nav pull-right">
                         <li class="divider-vertical"></li>
