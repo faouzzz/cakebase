@@ -75,7 +75,7 @@
                                     ?>        
                                 </li>
                                 <li class="divider"></li>
-                                <li><?php echo $this->Html->link('<i class="icon-signout icon-large"></i> Logout', array('admin' => true, 'controller' => 'users', 'action' => 'logout'), array('escape' => false, 'data-pjax' => 'false'));?></li>
+                                <li><?php echo $this->Html->link('<i class="icon-signout icon-large"></i> Logout', array('admin' => true, 'controller' => 'users', 'action' => 'logout'), array('escape' => false));?></li>
                             </ul>
                         </li>
                     </ul>

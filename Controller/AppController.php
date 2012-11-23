@@ -74,22 +74,5 @@ class AppController extends Controller {
 
     public function beforeRender(){
 
-        //handle the pjax stuff
-        //add a request detector to match pjax
-        $this->request->addDetector('pjax', array('callback' => function(){
-            return CakeRequest::header('X-PJAX');
-        }));
-
-        //use pjax layout if request was made with pjax
-        if($this->request->is('pjax')){
-            $this->response->type('json');
-            $this->layout = 'pjax';
-            //check if the pjax get param is sent, if so we want it
-            //removing to stop it showing in the links loaded
-            if(isset($this->request->query['_pjax'])){
-                unset($this->request->query['_pjax']);
-            }
-        }
     }
-
 }
