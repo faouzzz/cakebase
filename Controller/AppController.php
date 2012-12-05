@@ -65,6 +65,7 @@ class AppController extends Controller {
         'Session',
         'Form' => array('className' => 'BootstrapForm'),
         'Time' => array('className' => 'BootstrapTime'),
+        'Menu',
     );
 
     public function beforeFilter() {
