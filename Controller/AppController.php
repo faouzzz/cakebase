@@ -32,48 +32,39 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-    public $components = array(
-        'Acl',
-        'Auth' => array(
-            'authorize' => array(
-                'Actions' => array('actionPath' => 'controllers/')
-            ),
-            'flash' => array('element' => 'Flash/error', 'key' => 'flash', 'params' => array()),
-            'loginAction' => array('admin' => true, 'controller' => 'users', 'action' => 'login'),
-            'loginRedirect' => array('admin' => true, 'controller' => 'users', 'action' => 'index'),
-            'logoutRedirect' => array('admin' => true, 'controller' => 'users', 'action' => 'login'),
-            'authenticate' => array(
-                'Form' => array(
-                    'fields' => array('username' => 'email')
-                )
-            ),
-        ),
-        'Session',
-        'RequestHandler',
-    );
+	public $components = array(
+		'Acl',
+		'Auth' => array(
+			'authorize' => array(
+				'Actions' => array('actionPath' => 'controllers/')
+				),
+			'flash' => array('element' => 'Flash/error', 'key' => 'flash', 'params' => array()),
+			'loginAction' => array('admin' => true, 'controller' => 'users', 'action' => 'login'),
+			'loginRedirect' => array('admin' => true, 'controller' => 'users', 'action' => 'index'),
+			'logoutRedirect' => array('admin' => true, 'controller' => 'users', 'action' => 'login'),
+			'authenticate' => array(
+				'Form' => array(
+					'fields' => array('username' => 'email')
+					)
+				),
+			),
+		'Session',
+		'RequestHandler',
+	);
 
-/*
+/**
  * Override the default helpers with bootstrap ones. The bootstrap helper set
  * some defaults and provider some helper methods for bootstrap components.
- * 
+ *
  * See individual Helpers for methods available
- * 
  */
-    public $helpers = array(
-        'Html' => array('className' => 'BootstrapHtml'),
+	public $helpers = array(
+		'Html' => array('className' => 'BootstrapHtml'),
 		'Js' => array('Jquery'),
-        'Session',
-        'Form' => array('className' => 'BootstrapForm'),
-        'Time' => array('className' => 'BootstrapTime'),
-        'Menu',
-    );
+		'Session',
+		'Form' => array('className' => 'BootstrapForm'),
+		'Time' => array('className' => 'BootstrapTime'),
+		'Menu',
+	);
 
-    public function beforeFilter() {
-        //enable / disable auth
-        //$this->Auth->allow(array('*'));
-    }
-
-    public function beforeRender(){
-
-    }
 }

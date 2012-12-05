@@ -1,7 +1,10 @@
+<?php $this->assign('title', __('View Group', true)); ?>
+
 <?php $this->start('hook_current_actions'); ?>
     <li><?php echo $this->Html->link(__('Edit Group'), array('action' => 'edit', $group['Group']['id'])); ?></li>
     <li><?php echo $this->Html->confirm(__('Delete Group'), array('action' => 'delete', $group['Group']['id']), array(), __('Are you sure you want to delete Group #%s?', $group['Group']['id']), __('Delete Group?')); ?></li></li>
 <?php $this->end(); ?>
+
 <?php $this->start('hook_related_actions'); ?>
     <li><?php echo $this->Html->link(__('List Groups'), array('action' => 'index')); ?></li>
     <li><?php echo $this->Html->link(__('New Group'), array('action' => 'add')); ?></li>

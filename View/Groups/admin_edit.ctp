@@ -1,3 +1,5 @@
+<?php $this->assign('title', __('Edit Group', true)); ?>
+
 <?php $this->start('hook_current_actions'); ?>
 	<li><?php echo $this->Html->confirm(__('Delete Group'), array('action' => 'delete', $this->Form->value('Group.id')), array(), __('Are you sure you want to delete Group #%s?', $this->Form->value('Group.id')), __('Delete Group?')); ?></li>
    

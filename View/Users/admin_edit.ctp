@@ -1,3 +1,5 @@
+<?php $this->assign('title', __('Edit User', true)); ?>
+
 <?php $this->start('hook_current_actions'); ?>
 	<li><?php echo $this->Html->confirm(__('Delete User'), array('action' => 'delete', $this->Form->value('User.id')), array(), __('Are you sure you want to delete User #%s?', $this->Form->value('User.id')), __('Delete User?')); ?></li>
 <?php $this->end(); ?>

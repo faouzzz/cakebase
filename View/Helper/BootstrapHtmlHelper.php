@@ -1,8 +1,8 @@
 <?php
-
 App::uses('HtmlHelper', 'View/Helper');
 
 class BootstrapHtmlHelper extends HtmlHelper {
+
 /**
  * Creates a link which triggers are modal confirm to pop up
  *
@@ -24,29 +24,27 @@ class BootstrapHtmlHelper extends HtmlHelper {
  * @param string $confirmMessage JavaScript confirmation message.
  * @return string An `<a />` element.
  */
-    public function confirm($title, $url = null, $options = array(), $confirmMessage = false, $confirmTitle = false) {
+	public function confirm($title, $url = null, $options = array(), $confirmMessage = false, $confirmTitle = false) {
+		if ($confirmTitle === false) {
+			$confirmTitle = $title;
+		}
 
-        if($confirmTitle === false){
-            $confirmTitle = $title;
-        }
+		if (!is_array($options)) {
+			$options = array();
+		}
 
-        if(!is_array($options)){
-            $options = array();
-        }
+		$defaults = array(
+			'data-toggle' => 'confirm',
+			'data-modal-content' => $confirmMessage,
+			'data-modal-title' => $confirmTitle,
+		);
 
-        $defaults = array(
-            'data-toggle' => 'confirm',
-            //'data-target' => '#confirm',
-            'data-modal-content' =>  $confirmMessage,
-            'data-modal-title' => $confirmTitle,
-        );
+		if ($confirmMessage) {
+			$options = array_merge($defaults, $options);
+			$confirmMessage = false;
+		}
 
-        if($confirmMessage){
-            $options = array_merge($defaults, $options);
-            $confirmMessage = false;
-        }
-
-        return parent::link($title, $url, $options);
-    }
+		return parent::link($title, $url, $options);
+	}
 
 }

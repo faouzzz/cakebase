@@ -27,85 +27,85 @@
  */
 class ValidationMessageBehavior extends ModelBehavior {
 
-    protected $_messages = array(
-        'notempty' => 'This field can\'t be left blank.',
-        'between' => 'Must be between %s and %s characters long.',
-        'email' => 'Please provide a valid email address.',
-        'alphanumeric' => 'Only alphabets and numbers allowed.',
-        'boolean' => 'Only boolean data allowed.',
-        'cc' => 'The credit card number you supplied was invalid.',
-        'comparison' => 'The data you supplied are incorrect.',
-        'date' => 'Please provide date in correct format.',
-        'decimal' => 'Numeric value required.',
-        'equalto' => 'Value must be equal to %s',
-        'extension' => 'Please upload a valid file with supported extensions.',
-        'ip' => 'Please supply a valid IP address.',
-        'isunique' => 'This value has already been taken.',
-        'minlength' => 'Must be at least %s characters long.',
-        'maxlength' => 'Must be no larger than %s characters long.',
-        'money' => 'Please supply a valid monetary amount.',
-        'multiple' => 'Please select multiple options as specified.',
-        'inlist' => 'Invalid data provided, please try again.',
-        'numeric' => 'Only numeric value allowed.',
-        'phone' => 'Phone number is invalid.',
-        'postal' => 'Postal code is invalid.',
-        'range' => 'Please enter a value between %s and %s.',
-        'ssn' => 'Social Security Number is not valid.',
-        'url' => 'Please provide a valid URL.',
-        'slug' => 'Only alphabets, numbers, dash and underscore characters allowed',
-    );
+	protected $_messages = array(
+		'notempty' => 'This field can\'t be left blank.',
+		'between' => 'Must be between %s and %s characters long.',
+		'email' => 'Please provide a valid email address.',
+		'alphanumeric' => 'Only alphabets and numbers allowed.',
+		'boolean' => 'Only boolean data allowed.',
+		'cc' => 'The credit card number you supplied was invalid.',
+		'comparison' => 'The data you supplied are incorrect.',
+		'date' => 'Please provide a date in the correct format.',
+		'decimal' => 'Numeric value required.',
+		'equalto' => 'Value must be equal to %s',
+		'extension' => 'Please upload a valid file with supported extensions.',
+		'ip' => 'Please supply a valid IP address.',
+		'isunique' => 'This value has already been taken.',
+		'minlength' => 'Must be at least %s characters long.',
+		'maxlength' => 'Must be no larger than %s characters long.',
+		'money' => 'Please supply a valid monetary amount.',
+		'multiple' => 'Please select multiple options as specified.',
+		'inlist' => 'Invalid data provided, please try again.',
+		'numeric' => 'Only numeric value allowed.',
+		'phone' => 'Phone number is invalid.',
+		'postal' => 'Postal code is invalid.',
+		'range' => 'Please enter a value between %s and %s.',
+		'ssn' => 'Social Security Number is not valid.',
+		'url' => 'Please provide a valid URL.',
+		'slug' => 'Only alphabets, numbers, dash and underscore characters allowed',
+	);
 
-    /**
-     * Get the automatice validation message
-     * 
-     * @param array $rule, string or array
-     * @return string internationalized
-     */
-    private function autoMessage($rule) {
-        $rule[0] = $this->_messages[strtolower($rule[0])];
-        return __(call_user_func_array('sprintf', $rule), true);
-    }
+/**
+ * Get the automatice validation message
+ * 
+ * @param array $rule, string or array
+ * @return string internationalized
+ */
+	private function autoMessage($rule) {
+		$rule[0] = $this->_messages[strtolower($rule[0])];
+		return __(call_user_func_array('sprintf', $rule), true);
+	}
 
-    /**
-     * Attach automatic message for each validation
-     *
-     * @return void
-     * @access public
-     */
-    public function beforeValidate(Model $model) {
-        parent::beforeValidate($model);
+/**
+ * Attach automatic message for each validation
+ *
+ * @return void
+ * @access public
+ */
+	public function beforeValidate(Model $model) {
+		parent::beforeValidate($model);
 
-        if (!empty($model->validate)) {
-            foreach ($model->validate as $fieldName => &$ruleSet) {
+		if (!empty($model->validate)) {
+			foreach ($model->validate as $fieldName => &$ruleSet) {
 
-                // for single rule
-                if (is_string($ruleSet) && !empty($this->_messages[strtolower($ruleSet)])) {
-                    $ruleSet = array('rule' => $ruleSet, 'message' => $this->autoMessage(array($ruleSet)));
-                }
+				// for single rule
+				if (is_string($ruleSet) && !empty($this->_messages[strtolower($ruleSet)])) {
+					$ruleSet = array('rule' => $ruleSet, 'message' => $this->autoMessage(array($ruleSet)));
+				}
 
-                // for array
-                if (is_array($ruleSet)) {
-                    if (isset($ruleSet['rule'])) {
-                        if (!isset($ruleSet['message'])) {
-                            $rule = is_string($ruleSet['rule']) ? array($ruleSet['rule']) : $ruleSet['rule'];
-                            if (is_string($rule[0]) && !empty($this->_messages[strtolower($rule[0])])) {
-                                $ruleSet['message'] = $this->autoMessage($rule);
-                            }
-                        }
-                    } else {
-                        // for multiple rules per field
-                        foreach ($ruleSet as $index => $rule) {
-                            if (!isset($rule['message'])) {
-                                $rule = is_string($rule['rule']) ? array($rule['rule']) : $rule['rule'];
-                                if (is_string($rule[0]) && !empty($this->_messages[strtolower($rule[0])])) {
-                                    $ruleSet[$index]['message'] = $this->autoMessage($rule);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+				// for multiple rules
+				if (is_array($ruleSet)) {
+					if (isset($ruleSet['rule'])) {
+						if (!isset($ruleSet['message'])) {
+							$rule = is_string($ruleSet['rule']) ? array($ruleSet['rule']) : $ruleSet['rule'];
+							if (is_string($rule[0]) && !empty($this->_messages[strtolower($rule[0])])) {
+								$ruleSet['message'] = $this->autoMessage($rule);
+							}
+						}
+					} else {
+						// for multiple rules per field
+						foreach ($ruleSet as $index => $rule) {
+							if (!isset($rule['message'])) {
+								$rule = is_string($rule['rule']) ? array($rule['rule']) : $rule['rule'];
+								if (is_string($rule[0]) && !empty($this->_messages[strtolower($rule[0])])) {
+									$ruleSet[$index]['message'] = $this->autoMessage($rule);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 
 }

@@ -170,4 +170,5 @@ class UsersController extends AppController {
 			unset($this->request->data['User']['password']);
 		}
 	}
+
 }

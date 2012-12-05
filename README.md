@@ -31,7 +31,15 @@ __* If you are not forking the project and are duplicating or using this as a ne
 
 7. At this point you should only be receiving missing table errors, to fix this open up console and run `cake schema create --name Cakebase` from your app directory, this will set up the required tables
 
-8. Once the login page is loading you need to add some groups and users to your tables so you can login. Open `Controller/AppController` and uncomment the following line `//$this->Auth->allow(array('*'));` This will temporarily disable Authentication on your appplication allowing you access without logging in.
+8. Once the login page is loading you need to add some groups and users to your tables so you can login. Open `Controller/AppController` and add the following function:
+
+```
+	public function beforeFilter() {
+		$this->Auth->allow(array('*'));
+	}
+```
+
+This will temporarily disable Authentication on your application allowing you access without logging in.
 
 9. To add some users you need to go to soemthing like `http://localhost/your-app-name/admin/users/`. Here you will be able to add some groups and users. At first you __need__ to add at least one group and one user. After adding these remember to re-enable Auth by commenting out/removing `$this->Auth->allow(array('*'));` in `Controller/AppController`
 

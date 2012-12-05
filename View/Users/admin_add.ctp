@@ -1,3 +1,5 @@
+<?php $this->assign('title', __('Add User', true)); ?>
+
 <?php $this->start('hook_current_actions'); ?>
 	<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
 <?php $this->end(); ?>

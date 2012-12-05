@@ -1,3 +1,5 @@
+<?php $this->assign('title', __('Login', true)); ?>
+
 <?php 
 echo $this->Form->create('User');
 ?>    

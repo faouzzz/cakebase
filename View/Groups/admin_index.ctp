@@ -1,6 +1,9 @@
+<?php $this->assign('title', __('Groups', true)); ?>
+
 <?php $this->start('hook_current_actions'); ?>
     <li><?php echo $this->Html->link(__('New Group'), array('action' => 'add')); ?></li>            
 <?php $this->end(); ?>
+
 <?php $this->start('hook_related_actions'); ?>
 	<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 	<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>

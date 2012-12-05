@@ -20,9 +20,7 @@
 <html lang="en">
 <head>
 	<?php echo $this->Html->charset(); ?>
-	<title>
-		<?php echo $title_for_layout; ?>
-	</title>
+	<title><?php echo $this->fetch('title'); ?></title>
 	<?php
     echo $this->Html->meta('icon');
 
@@ -34,7 +32,7 @@
     ));
 
     echo '<!--[if lt IE 9]>';
-    echo $this->Html->script("http://html5shim.googlecode.com/svn/trunk/html5.js");
+    echo $this->Html->script("//html5shim.googlecode.com/svn/trunk/html5.js");
     echo '<!--<![endif]-->';
 
     echo $this->Html->script(array(
@@ -43,7 +41,6 @@
         'plugins',
         'main',
     ));
-	echo $scripts_for_layout;
 
 	echo $this->Js->writeBuffer();
     ?>
@@ -105,7 +102,7 @@
                 </div>
                 <div id="main" class="span10 posts index">
                     <div class="loader"></div>
-                    <?php echo $content_for_layout; ?>
+                    <?php echo $this->fetch('content'); ?>
                 </div>
             </div>
         </div>
