@@ -36,6 +36,7 @@ foreach (array('hasOne', 'belongsTo', 'hasMany', 'hasAndBelongsToMany') as $asso
 ?>
  */
 class <?php echo $name ?> extends <?php echo $plugin; ?>AppModel {
+
 <?php if ($useDbConfig != 'default'): ?>
 /**
  * Use database config
@@ -43,6 +44,7 @@ class <?php echo $name ?> extends <?php echo $plugin; ?>AppModel {
  * @var string
  */
 	public $useDbConfig = '<?php echo $useDbConfig; ?>';
+
 <?php endif;?>
 <?php if ($useTable && $useTable !== Inflector::tableize($name)):
 	$table = "'$useTable'";
@@ -56,6 +58,7 @@ if ($primaryKey !== 'id'): ?>
  * @var string
  */
 	public $primaryKey = '<?php echo $primaryKey; ?>';
+
 <?php endif;
 if ($displayField): ?>
 /**
@@ -64,6 +67,7 @@ if ($displayField): ?>
  * @var string
  */
 	public $displayField = '<?php echo $displayField; ?>';
+
 <?php endif;
 
 if (!empty($validate)):

@@ -18,22 +18,23 @@
  */
 ?>
 
-    /**
-     * <?php echo $admin ?>index method
-     *
-     * @return void
-     */
+/**
+ * <?php echo $admin ?>index method
+ *
+ * @return void
+ */
 	public function <?php echo $admin ?>index() {
 		$this-><?php echo $currentModelName ?>->recursive = 0;
 		$this->set('<?php echo $pluralName ?>', $this->paginate());
 	}
 
-    /**
-     * <?php echo $admin ?>view method
-     *
-     * @param string $id
-     * @return void
-     */
+/**
+ * <?php echo $admin ?>view method
+ *
+ * @param string $id
+ * @throws NotFoundException
+ * @return void
+ */
 	public function <?php echo $admin ?>view($id = null) {
 		$this-><?php echo $currentModelName; ?>->id = $id;
 		if (!$this-><?php echo $currentModelName; ?>->exists()) {
@@ -42,12 +43,12 @@
 		$this->set('<?php echo $singularName; ?>', $this-><?php echo $currentModelName; ?>->findById($id));
 	}
 
-    <?php $compact = array(); ?>
-    /**
-     * <?php echo $admin ?>add method
-     *
-     * @return void
-     */
+<?php $compact = array(); ?>
+/**
+ * <?php echo $admin ?>add method
+ *
+ * @return void
+ */
 	public function <?php echo $admin ?>add() {
 		if ($this->request->is('post')) {
 			$this-><?php echo $currentModelName; ?>->create();
@@ -81,13 +82,14 @@
 ?>
 	}
 
-    <?php $compact = array(); ?>
-    /**
-     * <?php echo $admin ?>edit method
-     *
-     * @param string $id
-     * @return void
-     */
+<?php $compact = array(); ?>
+/**
+ * <?php echo $admin ?>edit method
+ *
+ * @param string $id
+ * @throws NotFoundException
+ * @return void
+ */
 	public function <?php echo $admin; ?>edit($id = null) {
 		$this-><?php echo $currentModelName; ?>->id = $id;
 		if (!$this-><?php echo $currentModelName; ?>->exists()) {
@@ -107,7 +109,7 @@
 <?php endif; ?>
 			}
 		} else {
-			$this->request->data = $this-><?php echo $currentModelName; ?>->findByIdnull($id);
+			$this->request->data = $this-><?php echo $currentModelName; ?>->findById($id);
 		}
 <?php
 		foreach (array('belongsTo', 'hasAndBelongsToMany') as $assoc):
@@ -126,12 +128,14 @@
 	?>
 	}
 
-    /**
-     * <?php echo $admin ?>delete method
-     *
-     * @param string $id
-     * @return void
-     */
+/**
+ * <?php echo $admin ?>delete method
+ *
+ * @param string $id
+ * @throws MethodNotAllowedException
+ * @throws NotFoundException
+ * @return void
+ */
 	public function <?php echo $admin; ?>delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();

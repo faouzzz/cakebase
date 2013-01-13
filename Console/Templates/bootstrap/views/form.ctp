@@ -15,7 +15,9 @@
 * @since         CakePHP(tm) v 1.2.0.5234
 * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
 */
+ 
 ?>
+
 <?php echo "<?php \$this->start('hook_current_actions'); ?>\n"; ?>
 <?php 
     if (strpos($action, 'add') === false): 
@@ -23,8 +25,8 @@
     elseif (strpos($action, 'edit') === false):
         echo "\t<li><?php echo \$this->Html->link(__('List " . $pluralHumanName . "'), array('action' => 'index'));?></li>\n";
     endif;
-?>   
-<?php echo "<?php \$this->end(); ?>\n"?>
+echo "<?php \$this->end(); ?>\n"?>
+
 <?php echo "<?php \$this->start('hook_related_actions'); ?>\n"; ?>
 <?php
         if (strpos($action, 'add') === false): 
@@ -53,7 +55,7 @@
                 printf("<?php echo __('%s %s'); ?>", Inflector::humanize($action), $singularHumanName); 
             }
         ?></legend>
-    <?php echo "<?php echo \$this->Session->flash(); ?>\n" ?>
+<?php echo "\t\t<?php echo \$this->Session->flash(); ?>\n" ?>
 <?php
     echo "\t\t<?php\n";
     foreach ($fields as $field) {
@@ -72,7 +74,7 @@
 ?>
     </fieldset>
     <div class="form-actions">
-        <?php echo "<?php echo \$this->Form->button(sprintf('<i class=\"icon-white icon-ok-sign\"></i> %s', __('Save $singularHumanName')), array('type' => 'submit', 'escape' => false, 'class' => 'btn btn-primary')); ?>\n"; ?>
+        <?php echo "<?php echo \$this->Form->button(sprintf('<i class=\"icon-white icon-ok-sign\"></i> %s', __('Save $singularHumanName')), array('type' => 'submit', 'escape' => false, 'class' => 'btn btn-info')); ?>\n"; ?>
     </div>    
 <?php
 echo "<?php echo \$this->Form->end();?>\n";

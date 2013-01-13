@@ -38,7 +38,6 @@ if (!$isScaffold) {
 ?>
  */
 class <?php echo $controllerName; ?>Controller extends <?php echo $plugin; ?>AppController {
-
 <?php if ($isScaffold): ?>
 /**
  * Scaffold

@@ -20,6 +20,7 @@
     <li><?php echo "<?php echo \$this->Html->link(__('Edit " . $singularHumanName . "'), array('action' => 'edit', \${$singularVar}['{$modelClass}']['{$primaryKey}'])); ?>"; ?></li>            
     <li><?php echo "<?php echo \$this->Html->confirm(__('Delete " . $singularHumanName . "'), array('action' => 'delete', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array(), __('Are you sure you want to delete {$singularHumanName} #%s?', \${$singularVar}['{$modelClass}']['{$primaryKey}']), __('Delete {$singularHumanName}?')); ?></li>"; ?></li>
 <?php echo "<?php \$this->end(); ?>\n"?>
+
 <?php echo "<?php \$this->start('hook_related_actions'); ?>\n"; ?>
     <li><?php echo "<?php echo \$this->Html->link(__('List " . $pluralHumanName . "'), array('action' => 'index')); ?>"; ?></li>            
     <li><?php echo "<?php echo \$this->Html->link(__('New " . $singularHumanName . "'), array('action' => 'add')); ?>"; ?></li>            
@@ -38,9 +39,10 @@
 <?php echo "<?php \$this->end(); ?>\n"?>
 
 <h2 class="content-header"><?php echo "<?php  echo __('{$singularHumanName}');?>"; ?></h2>
+
 <?php echo "<?php echo \$this->Session->flash(); ?>\n" ?>
 
-<dl class="attribute-list row">
+<dl class="dl-horizontal">
 <?php
     foreach ($fields as $field) {
         $isKey = false;
@@ -48,18 +50,18 @@
             foreach ($associations['belongsTo'] as $alias => $details) {
                 if ($field === $details['foreignKey']) {
                     $isKey = true;
-                    echo "\t<dt class=\"span2\"><?php echo __('" . Inflector::humanize(Inflector::underscore($alias)) . "'); ?></dt>\n";
-                    echo "\t<dd class=\"span8\"><?php echo \$this->Html->link(\${$singularVar}['{$alias}']['{$details['displayField']}'], array('controller' => '{$details['controller']}', 'action' => 'view', \${$singularVar}['{$alias}']['{$details['primaryKey']}'])); ?>&nbsp;</dd>\n";
+                    echo "\t<dt><?php echo __('" . Inflector::humanize(Inflector::underscore($alias)) . "'); ?></dt>\n";
+                    echo "\t<dd><?php echo \$this->Html->link(\${$singularVar}['{$alias}']['{$details['displayField']}'], array('controller' => '{$details['controller']}', 'action' => 'view', \${$singularVar}['{$alias}']['{$details['primaryKey']}'])); ?>&nbsp;</dd>\n";
                     break;
                 }
             }
         }
         if($isKey !== true) {
-            echo "\t<dt class=\"span2\"><?php echo __('" . Inflector::humanize($field) . "'); ?></dt>\n";
+            echo "\t<dt><?php echo __('" . Inflector::humanize($field) . "'); ?></dt>\n";
             if(in_array($field, array('created', 'modified', 'updated'))){                
                 echo "\t<dd class=\"span8\"><?php echo \$this->Time->niceShort(\${$singularVar}['{$modelClass}']['{$field}']); ?>&nbsp;</dd>\n";
             }else{
-                echo "\t<dd class=\"span8\"><?php echo h(\${$singularVar}['{$modelClass}']['{$field}']); ?>&nbsp;</dd>\n";
+                echo "\t<dd><?php echo h(\${$singularVar}['{$modelClass}']['{$field}']); ?>&nbsp;</dd>\n";
             }            
             
         }
@@ -73,11 +75,11 @@ foreach ($associations['hasOne'] as $alias => $details):
     <div class="related">
         <h3><?php echo "<?php echo __('" . $alias . "');?>"; ?></h3>
             <?php echo "<?php if (!empty(\${$singularVar}['{$alias}'])):?>\n"; ?>
-        <dl class="attribute-list row">
+        <dl class="dl-horizontal">
             <?php
             foreach ($details['fields'] as $field) {
-                echo "\t<dt class=\"span2\"><?php echo __('" . Inflector::humanize($field) . "');?></dt>\n";
-                echo "\t<dd class=\"span8\">\n\t<?php echo \${$singularVar}['{$alias}']['{$field}'];?>\n&nbsp;</dd>\n";
+                echo "\t<dt><?php echo __('" . Inflector::humanize($field) . "');?></dt>\n";
+                echo "\t<dd>\n\t<?php echo \${$singularVar}['{$alias}']['{$field}'];?>\n&nbsp;</dd>\n";
             }
             ?>
         </dl>
@@ -138,5 +140,4 @@ $otherPluralHumanName = Inflector::humanize($details['controller']);
         </tbody>
     </table>
 <?php echo "<?php endif; ?>\n"; ?>
-</div>
-<?php endforeach; ?>
+</div><?php endforeach; ?>

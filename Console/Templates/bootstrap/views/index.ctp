@@ -17,10 +17,10 @@
 */
 ?>
 <?php echo "<?php \$this->start('hook_current_actions'); ?>\n"; ?>
-    <li><?php echo "<?php echo \$this->Html->link(__('New " . $singularHumanName . "'), array('action' => 'add')); ?>"; ?></li>            
+    <li><?php echo "<?php echo \$this->Html->link(__('New " . $singularHumanName . "'), array('action' => 'add')); ?>"; ?></li>
 <?php echo "<?php \$this->end(); ?>\n"?>
-<?php echo "<?php \$this->start('hook_related_actions'); ?>\n"; ?>
-<?php
+
+<?php echo "<?php \$this->start('hook_related_actions'); ?>\n";
         $done = array();
         foreach ($associations as $type => $data) {
             foreach ($data as $alias => $details) {
@@ -31,10 +31,10 @@
                 }
             }
         }
-?>
-<?php echo "<?php \$this->end(); ?>\n"?>
+echo "<?php \$this->end(); ?>\n" ?>
 
 <h2 class="content-header"><?php echo "<?php echo __('" . $pluralHumanName . "'); ?>"; ?></h2>
+
 <?php echo "<?php echo \$this->Session->flash(); ?>\n" ?>
 
 <table class="table table-striped ">
