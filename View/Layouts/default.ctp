@@ -58,9 +58,22 @@
                 <div class="nav-collapse">
                     <ul class="nav">
                         <?php 
+                            echo $this->Menu->menu(array(
+                                'Item 1' => array('controller' => 'users'),
+                                array(
+                                    'title' => 'Item 2', 
+                                    'url' => array('controller' => 'users')
+                                ),
+                                array(
+                                    'title' => 'Item 3', 
+                                    'url' => array('controller' => 'users')
+                                ),
+                            ));
+                            /*
                             echo $this->Menu->item($this->Html->link(__('Home'), '/'));
                             echo $this->Menu->item($this->Html->link(__('Users'), array('admin' => true, 'controller' => 'users', 'action' => 'index')));
                             echo $this->Menu->item($this->Html->link(__('Groups'), array('admin' => true, 'controller' => 'groups', 'action' => 'index')));
+                            */
                         ?>
                     </ul>
                     <ul class="nav pull-right">

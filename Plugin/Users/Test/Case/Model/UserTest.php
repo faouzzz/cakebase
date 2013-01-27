@@ -1,6 +1,5 @@
 <?php
-/* User Test cases generated on: 2012-03-13 19:57:39 : 1331668659*/
-App::uses('User', 'Model');
+App::uses('User.User', 'Model');
 
 /**
  * User Test Case
@@ -12,7 +11,7 @@ class UserTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.user', 'app.group');
+	public $fixtures = array('plugin.users.user', 'plugin.users.group');
 
 /**
  * setUp method
@@ -25,6 +24,9 @@ class UserTestCase extends CakeTestCase {
 		$this->User = ClassRegistry::init('User');
 	}
 
+	public function testTest(){
+
+	}
 /**
  * tearDown method
  *

@@ -18,6 +18,15 @@ App::uses('AppHelper', 'View/Helper');
 class MenuHelper extends AppHelper {
     public $helpers = array('Html');
 
+    public function menu($menu){
+        foreach($menu as $key => $value){
+            if(is_int($key)){
+                extract($value);
+                //var_dump($title);
+            }
+        }
+    }
+
 /**
 * Creates a formatted list element
 *

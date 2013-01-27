@@ -74,15 +74,9 @@ class UsersControllerTestCase extends ControllerTestCase {
  * @return void
  */
 	public function testAdminIndex() {
-        
-        $this->Users->Session->write('Auth.User', array(
-            'id' => 5,
-            'email' => 'liam@nanothree.net',
-            'group_id' => 1,
-        ));
-        
-        $this->testAction('admin/users/index');
-
+        $result = $this->testAction('/admin/users/index');
+        //var_dump($result);
+        //die();
     }
 
 /**
@@ -100,14 +94,14 @@ class UsersControllerTestCase extends ControllerTestCase {
  * @return void
  */
 	public function testAdminAdd() {
-        echo 'boom';
+        /*
         $this->Users->Session->write('Auth.User', array(
             'id' => 5,
-            'email' => 'liam@nanothree.net',
+            'email' => 'admin@eaxample.com',
             'group_id' => 1,
         ));
-        
-        $this->Users->request->data = array(
+        */
+        $data = array(
             'User' => array(
                 'first_name'        => 'Test',
                 'last_name'         => 'User',
@@ -117,18 +111,9 @@ class UsersControllerTestCase extends ControllerTestCase {
             ),
         );
         
-        $result = $this->testAction('admin/users/add', array('method' => 'post', 'type' => 'contents'));
-        debug($this->Users);
+        $result = $this->testAction('admin/users/add', array('data' => $data, 'method' => 'post', 'return' => 'view'));
         debug($this->vars);
-        debug($this->view);
-        debug($this->contents);
-        debug($this->result);
-        debug($result);
-        //debug($this->data);
-        debug($this->contents);
-        debug($this);
         die();
-        $this->assert();
 	}
 
 /**
