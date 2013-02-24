@@ -1,11 +1,11 @@
 <?php
-App::uses('AppController', 'Controller');
+App::uses('UsersAppController', 'Users.Controller');
 /**
  * Users Controller
  *
  * @property User $User
  */
-class UsersController extends AppController {
+class UsersController extends UsersAppController {
 
 /**
  * admin_index method
@@ -13,10 +13,9 @@ class UsersController extends AppController {
  * @return void
  */
 	public function admin_index() {
-		$this->User->recursive = 0;
 
 		$this->paginate = array(
-			'limit' => 5
+			'contain' => array('Group'),
 		);
 
 		$this->set('users', $this->paginate());
@@ -70,7 +69,7 @@ class UsersController extends AppController {
 		}
 
 		if ($this->request->is('post') || $this->request->is('put')) {
-			//if no password is present then we won't update
+			//if no password is present don't validate or update
 			if (empty($this->request->data['User']['password'])) {
 				unset($this->request->data['User']['password']);
 			}
@@ -82,8 +81,6 @@ class UsersController extends AppController {
 			}
 		} else {
 			$this->request->data = $this->User->findById($id);
-			//unset the password so it doesn't get overwritten
-			unset($this->request->data['User']['password']);
 		}
 		$groups = $this->User->Group->find('list');
 		$this->set(compact('groups'));

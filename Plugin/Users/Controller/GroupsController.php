@@ -1,12 +1,12 @@
 <?php
-App::uses('AppController', 'Controller');
+App::uses('UsersAppController', 'Controller');
 
 /**
  * Groups Controller
  *
  * @property Group $Group
  */
-class GroupsController extends AppController {
+class GroupsController extends UsersAppController {
 
 /**
  * admin_index method

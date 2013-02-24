@@ -1,11 +1,11 @@
 <?php
-App::uses('AppModel', 'Model');
+App::uses('UsersAppModel', 'Users.Model');
 /**
  * Group Model
  *
  * @property User $User
  */
-class Group extends AppModel {
+class Group extends UsersAppModel {
 
 /**
  * Display field
@@ -34,7 +34,7 @@ class Group extends AppModel {
  */
 	public $hasMany = array(
 		'User' => array(
-			'className' => 'User',
+			'className' => 'Users.User',
 			'foreignKey' => 'group_id',
 			'dependent' => false,
 			'conditions' => '',

@@ -1,11 +1,11 @@
 <?php
-App::uses('AppModel', 'Model');
+App::uses('UsersAppModel', 'Users.Model');
 /**
  * User Model
  *
  * @property Group $Group
  */
-class User extends AppModel {
+class User extends UsersAppModel {
 
 /**
  * Display field
@@ -66,7 +66,7 @@ class User extends AppModel {
  */
 	public $belongsTo = array(
 		'Group' => array(
-			'className' => 'Group',
+			'className' => 'Users.Group',
 			'foreignKey' => 'group_id',
 			'conditions' => '',
 			'fields' => '',
