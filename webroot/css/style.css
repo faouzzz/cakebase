@@ -10,6 +10,9 @@ body {
 	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 }
 
+/* Remove the glyphicons from icons, we use font-awesome */
+[class^="icon-"], [class*=" icon-"]{background: none;}
+
 #container > .content {
 	background-color: #FFFFFF;
 	border-radius: 6px 6px 6px 6px;
