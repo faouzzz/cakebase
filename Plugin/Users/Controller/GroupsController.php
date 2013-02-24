@@ -1,5 +1,5 @@
 <?php
-App::uses('UsersAppController', 'Controller');
+App::uses('UsersAppController', 'Users.Controller');
 
 /**
  * Groups Controller
