@@ -44,13 +44,14 @@ class AppController extends Controller {
 			'logoutRedirect' => array('admin' => true, 'controller' => 'users', 'action' => 'login'),
 			'authenticate' => array(
 				'Form' => array(
-						'userModel' => 'User.User',
+						'userModel' => 'Users.User',
 						'fields' => array('username' => 'email')
 					)
 				),
 			),
 		'Session',
 		'RequestHandler',
+		'DebugKit.Toolbar'
 	);
 
 /**
