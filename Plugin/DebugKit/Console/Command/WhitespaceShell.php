@@ -4,28 +4,23 @@
  *
  * Based on jperras' shell found at http://bin.cakephp.org/view/626544881
  *
- * PHP 5
+ * PHP versions 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       DebugKit.Console.Command
+ * @copyright     Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org
+ * @package       debug_kit
+ * @subpackage    debug_kit.vendors.shells
  * @since         DebugKit 1.3
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 App::uses('Folder', 'Utility');
 
-/**
- * Class WhitespaceShell
- *
- * @package       DebugKit.Console.Command
- * @since         DebugKit 1.3
- */
 class WhitespaceShell extends Shell {
 
 /**
@@ -57,7 +52,7 @@ class WhitespaceShell extends Shell {
 	}
 
 /**
- * Much like main() except files are modified. Be sure to have
+ * Much like main() except files are modified.  Be sure to have
  * backups or use version control.
  *
  * @return void
@@ -87,7 +82,7 @@ class WhitespaceShell extends Shell {
 /**
  * get the option parser
  *
- * @return ConsoleOptionParser
+ * @return void
  */
 	public function getOptionParser() {
 		$parser = parent::getOptionParser();
