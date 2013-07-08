@@ -11,6 +11,7 @@ webroot/index.php
 
 # temporary files
 tmp/cache/*/*
+tmp/cache/*
 tmp/logs/*
 tmp/sessions/*
 tmp/tests/*
