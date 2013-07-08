@@ -1,5 +1,7 @@
 <?php
 App::uses('UsersAppModel', 'Users.Model');
+App::uses('AuthComponent', 'Controller/Component');
+
 /**
  * User Model
  *
@@ -101,7 +103,7 @@ class User extends UsersAppModel {
 		if (isset($this->data['User']['password'])) {
 			$this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
 		}
-		
+
 		return true;
 	}
 
